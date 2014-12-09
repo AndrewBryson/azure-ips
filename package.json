@@ -1,0 +1,18 @@
+{
+  "name": "azure-ips",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.10.4",
+    "jade": "^1.8.1",
+    "request": "^2.49.0",
+    "underscore": "^1.7.0",
+    "xml2js": "^0.4.4"
+  }
+}
