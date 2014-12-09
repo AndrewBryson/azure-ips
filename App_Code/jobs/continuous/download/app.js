@@ -1,12 +1,14 @@
 var request = require('request')
 	fs = require('fs')
-	xml2js = require('xml2js');
+	xml2js = require('xml2js')
+	path = require('path');
 
 var azureUrl = process.env.azureUrl || 'http://download.microsoft.com/download/0/1/8/018E208D-54F8-44CD-AA26-CD7BC9524A8C/PublicIPs_20141201.xml';
 console.log("Request to: " + azureUrl);
 
 var tempOutputFile = 'azureIPs.xml';
-var finalOutputFile = 'azureIPs.json';
+var finalOutputFile = path.resolve('../../../../azureIPs.json');
+var downloadIntervalInSeconds = process.env.downloadIntervalInSeconds || 60;
 
 var parser = new xml2js.Parser();
 
@@ -45,6 +47,7 @@ function downloadFile() {
 					info.push(dataCentre);
 				});
 								
+				console.log('Outputting to: ' + finalOutputFile);
 				fs.writeFile(finalOutputFile, JSON.stringify(info), function (err) {
 					if (err) throw err;				
 					console.log('azureIPs.json written');
@@ -54,7 +57,7 @@ function downloadFile() {
 		
 	});
 
-	setTimeout(downloadFile, 5 * 1000);
+	setTimeout(downloadFile, downloadIntervalInSeconds * 1000);
 }
 
 downloadFile();
