@@ -8,7 +8,7 @@ console.log("Request to: " + azureUrl);
 
 var tempOutputFile = 'azureIPs.xml';
 var finalOutputFile = path.resolve('../../../../azureIPs.json');
-var downloadIntervalInSeconds = process.env.downloadIntervalInSeconds || 60;
+var downloadIntervalInSeconds = process.env.downloadIntervalInSeconds || 3600;
 
 var parser = new xml2js.Parser();
 
