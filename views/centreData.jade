@@ -1,0 +1,10 @@
+doctype html
+html
+	body
+	header
+		h1 Azure IPs
+	div
+		h2 #{dataCentre.name}
+	ul
+		each subnet in dataCentre.subnets
+			li= subnet

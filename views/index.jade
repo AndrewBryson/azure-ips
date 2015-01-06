@@ -1,10 +1,16 @@
 doctype html
 html
+	head
+		script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js')
+		script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
 	body
 	header
 		h1 Azure IPs
 	div
-		h2 #{dataCentre.name}
+		h2 Last Updated: <span id="lastUpdated"></span>
+		script(type='text/javascript').
+			jQuery('#lastUpdated').text(moment(new Date("#{lastUpdated}")).fromNow());
 	ul
-		each subnet in dataCentre.subnets
-			li= subnet
+		each centre in dataCentres
+			li
+				a(href=centre.name) #{centre.name}
